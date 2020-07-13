@@ -1,0 +1,288 @@
+{% extends 'app_name/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<style>
+    body {
+        background-color: #E8E8E8;
+    }
+
+    .box {
+        margin-top: 6rem;
+
+    }
+
+    ul {
+        position: relative;
+        right: 0;
+    }
+
+    .row input {
+        margin-bottom: 2rem !important;
+        border: 0 !important;
+        box-shadow: 0 !important;
+         
+    }
+
+    .row textarea {
+        margin-bottom: 2rem;
+        border: 0;
+    }
+
+    .box h1 {
+        margin-bottom: 2rem;
+    }
+
+    .icons {
+        margin-top: 3rem;
+    }
+
+    .copy {
+        margin-top: 1rem;
+    }
+
+    .icons a {
+        color: #ccc;
+        margin: 1rem;
+    }
+
+    .icons a:hover {
+        color: #000;
+    }
+
+
+
+
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #f1f1f1;
+        padding: 20px;
+        font-family: Arial;
+    }
+
+    /* Center website */
+    .main {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    h1 {
+        font-size: 50px;
+        word-break: break-all;
+    }
+
+    .row {
+        margin: 8px -16px;
+    }
+
+    /* Add padding BETWEEN each column (if you want) */
+    .row,
+    .row>.column {
+        padding: 8px;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 33.33%;
+        display: none;
+        /* Hide columns by default */
+    }
+
+    /* Clear floats after rows */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Content */
+    .content {
+        background-color: white;
+        padding: 10px;
+    }
+
+    /* The "show" class is added to the filtered elements */
+    .show {
+        display: block;
+    }
+
+    /* Style the buttons */
+    .btn {
+        border: none;
+        outline: none;
+        padding: 12px 16px;
+        background-color: white;
+        cursor: pointer;
+
+    }
+
+    /* Add a grey background color on mouse-over */
+    .btn:hover {
+        background-color: #ddd;
+    }
+
+    /* Add a dark background color to the active button */
+    .btn.active {
+        background-color: #666;
+        color: white;
+    }
+</style>
+{% endblock stylesheets %}
+
+
+{% block headscript %}
+{% endblock headscript %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+    <div class="box shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="">
+            <center>
+                <h1 style="color: #15aabf">PORTFOLIO</h1>
+            </center>
+        </div>
+
+
+
+        <div class="container">
+            <div class="row">
+
+                <div id="myBtnContainer">
+
+                    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+                    <button class="btn" onclick="filterSelection('nature')"> Nature</button>
+                    <button class="btn" onclick="filterSelection('cars')"> Cars</button>
+                    <button class="btn" onclick="filterSelection('people')"> People</button>
+
+                </div>
+
+
+                <!-- Portfolio Gallery Grid -->
+                <div class="row">
+                    <div class="column nature col-md-4">
+                        <div class="content">
+                            <img src="{% static 'app_name/images/p1.jpg' %}" alt="Mountains" style="width:100%;height: 200px">
+
+                        </div>
+                    </div>
+                    <div class="column nature col-md-4">
+                        <div class="content">
+                            <img src="{% static 'app_name/images/p2.jpg' %}" alt="Lights" style="width:100%;height: 200px">
+
+                        </div>
+                    </div>
+                    <div class="column nature col-md-4">
+                        <div class="content">
+                            <img src="{% static 'app_name/images/p3.jpg' %}" alt="Nature" style="width:100%;height: 200px">
+
+                        </div>
+                    </div>
+
+                    <div class="column cars col-md-4">
+                        <div class="content">
+                            <img src="{% static 'app_name/images/p4.jpg' %}" alt="Car" style="width:100%;height: 200px">
+
+                        </div>
+                    </div>
+                    <div class="column cars col-md-4">
+                        <div class="content">
+                            <img src="{% static 'app_name/images/p5.png' %}" alt="Car" style="width:100%;height: 200px">
+
+                        </div>
+                    </div>
+                    <div class="column cars col-md-4">
+                        <div class="content">
+                            <img src="{% static 'app_name/images/p6.jpg' %}" alt="Car" style="width:100%;height: 200px">
+
+                        </div>
+                    </div>
+
+                    <div class="column people col-md-4">
+                        <div class="content">
+                            <img src="{% static 'app_name/images/p7.png' %}" alt="People" style="width:100%;height: 200px">
+
+                        </div>
+                    </div>
+                    <div class="column people col-md-4">
+                        <div class="content">
+                            <img src="{% static 'app_name/images/p8.jpg' %}" alt="People" style="width:100%;height: 200px">
+
+                        </div>
+                    </div>
+                    <div class="column people col-md-4">
+                        <div class="content">
+                            <img src="{% static 'app_name/images/p9.jpg' %}" alt="People" style="width:100%;height: 200px">
+
+                        </div>
+                    </div>
+                    <!-- END GRID -->
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    filterSelection("all") // Execute the function and show all columns
+    function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("column");
+        if (c == "all") c = "";
+        // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+        for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+    }
+
+    // Show filtered elements
+    function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {
+                element.className += " " + arr2[i];
+            }
+        }
+    }
+
+    // Hide elements that are not selected
+    function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
+            }
+        }
+        element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
+{% endblock %}

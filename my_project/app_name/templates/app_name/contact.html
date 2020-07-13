@@ -1,0 +1,96 @@
+{% extends 'app_name/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<style>
+    .box {
+        margin-top: 6rem;
+    }
+    ul {
+        position: relative;
+        right: 0;
+    }
+    .row input {
+        margin-bottom: 2rem;
+        border: 0;
+        box-shadow: 0 important;
+    }
+    .row textarea {
+        margin-bottom: 2rem;
+        border: 0;
+    }
+    .box h1 {
+        margin-bottom: 5rem;
+    }
+    .icons {
+        margin-top: 3rem;
+    }
+    .copy {
+        margin-top: 1rem;
+    }
+    .icons a {
+        color: #ccc;
+        margin: 1rem;
+    }
+    .icons a:hover {
+        color: #000;
+    }
+</style>
+{% endblock stylesheets %}
+
+{% block headscript %}
+{% endblock headscript %}
+
+{% block content %}
+<div class="container">
+    <div class="box shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="">
+            <center>
+                <h1 style="color: #15aabf">CONTACT ME</h1>
+            </center>
+        </div>
+        <div class=" container">
+            <form method="POST" action="{% url 'contact_form_submit' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        <input type="text" id="full_name" name="full_name" class="form-control form-control-lg border-bottom border-dark shadow-none" placeholder="Name">
+                    </div>
+                    <div class="form-group  col-sm-4">
+                        <input type="text" id="email_id" name="email_id" class="form-control form-control-lg border-bottom border-dark shadow-none" placeholder="Email">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <input type="text" id="contact_number" name="contact_number" class="form-control form-control-lg border-bottom border-dark shadow-none" placeholder="Contact">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <textarea id="message" name="message" class="form-control form-control-lg border-bottom border-dark shadow-none" rows="5" placeholder="Your Message"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <center> <button type="submit" class="btn-info btn btn-lg">Submit</button></center>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="container">
+            <div class="icons">
+                <center>
+                    <a href="#"><span class="fab fa-github fa-2x"></span></a>
+                    <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+                </center>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copy">
+                <center>
+                    <h6>&copy;2020 My Portfolio</h6>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

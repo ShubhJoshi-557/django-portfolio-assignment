@@ -1,0 +1,41 @@
+{% extends 'app_name/base.html' %}
+{% load static %}
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block headscript %}
+{% endblock headscript %}
+
+{% block content %}
+
+<h3>All Data</h3>
+<hr>
+<div>
+    <table id="my_table" class="display" style="width:  100%;text-align: center;">
+        <thead>
+            <tr>
+                <th>Sr. No</th>
+                <th>Full Name</th>
+                <th>Email Id</th>
+                <th>Contact</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in contact_data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ data.full_name }}</td>
+                <td>{{ data.email_id }}</td>
+                <td>{{ data.contact_number }}</td>
+                <td>{{ data.message }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+{% block script %}
+{% endblock  %}
